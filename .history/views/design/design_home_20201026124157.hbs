@@ -1,0 +1,33 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+  <div part="1" class="first part" hidden>
+    {{> design/one}}
+  </div>
+  <div part="2" class="second part" hidden>
+    {{> design/two}}
+  </div>
+  <div part="3" class="third part">
+    {{> design/three}}
+  </div>
+
+
+</form>
+<br><br>
+
+{{!-- <button class="ui inverted fluid red large button" onclick="event.preventDefault();">등록하기</button> --}}
+
+<br><br>
+
+<script>
+  function next(part) {
+    if (part === 3) {
+      alert('end!')
+      return false
+    }
+    $('div.part').hide();
+    $(`[part=${part+1}]`).show();
+  }
+</script>

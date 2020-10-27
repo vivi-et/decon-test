@@ -1,0 +1,24 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+  <div part="1" class="part">
+    {{> design/first}}
+  </div>
+
+
+  <input name="mainformval" id="mainformval" hidden>
+  <input name="suboptionformval" id="suboptionformval" hidden>
+</form>
+<br><br>
+
+
+<button class="ui inverted fluid red large button" onclick="event.preventDefault(); submit();">등록하기</button>
+<br><br>
+
+<script>
+  function next(part) {
+
+  }
+</script>

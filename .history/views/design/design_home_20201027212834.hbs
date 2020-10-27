@@ -1,0 +1,106 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+  <div part="1" class="one part">
+    {{> design/one}}
+  </div>
+
+  <div part="2" class="two part" hidden>
+    {{> design/two}}
+  </div>
+
+  <div part="3" class="three part" hidden>
+    {{> design/three}}
+  </div>
+
+  <div part="4" class="four part" hidden>
+    {{> design/four}}
+  </div>
+
+  <div part="5" class="five part" hidden>
+    {{> design/five}}
+  </div>
+
+  <div part="6" class="six part" hidden>
+    {{> design/six}}
+  </div>
+
+  <div part="7" class="seven part" hidden>
+    {{> design/seven}}
+  </div>
+  <br><br>
+  <button class="ui button" id="submit" type="submit" hidden>Submit</button>
+
+
+</form>
+<br><br>
+
+{{!-- <button class="ui inverted fluid red large button" onclick="event.preventDefault();">등록하기</button> --}}
+
+<br><br>
+
+<script>
+  let questions = 0;
+  let maxQuestions = 4;
+
+
+
+  $(document).ready(function () {
+    $('div.next').show();
+  })
+
+  function next(part) {
+    if (part >= 6) {
+      alert('end!')
+      $('div.part').show();
+      $(window).scrollTop();
+      return false;
+    }
+    $('div.part').hide();
+    $(`[part=${part + 1}]`).show();
+  }
+
+
+  function selectthis(_this, _number, _type) {
+    console.log(_this);
+
+    $(`div.${_type}`).removeClass("selecteditem");
+    $(_this).addClass("selecteditem");
+
+    $(`input#${_type}`).val(_number);
+
+    if (_type === 'budget') {
+      togglebudget(_number);
+    }
+
+  }
+
+  function addquestion() {
+    if (questions > maxQuestions) {
+      alert(`${maxQuestions + 1} only!`)
+      questions = maxQuestions;
+      return false;
+    }
+    questions++;
+
+    const html = `{{> design/question}}`;
+    $('div#questionfield').append(html);
+
+
+  }
+  function deletequestion(_this) {
+    console.log(_this);
+
+    $(_this).closest('div.questionbox').remove();
+    questions--;
+  }
+
+</script>
+
+<style>
+  .selecteditem {
+    border-bottom: 10px solid green !important;
+  }
+</style>

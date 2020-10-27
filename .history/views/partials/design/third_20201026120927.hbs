@@ -1,0 +1,59 @@
+<h1>Details</h1>
+<h3>Step 3 of 7</h3>
+
+<h3>
+  <b>What type of project do you have?</b>
+</h3>
+
+
+<div class="ui three stackable cards">
+  <div class="type card" onclick="selectthis(this, 1);">
+    <div class="image">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+  <div class="type card" onclick="selectthis(this, 2);">
+    <div class="image">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+  <div class="type card" onclick="selectthis(this, 3);">
+    <div class="image" onclick="3">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+</div>
+<br><br>
+<input id="projecttype" type="number" name="projecttype">
+<br><br>
+<h3>
+  Screening Questions (optional)
+</h3>
+Add screening questions and/or require a cover letter
+<br>
+<br>
+<div></div>
+<a class="ui label">
+  <i class="mail icon"></i>
+  Add a Question
+</a>
+<br><br>
+<button class="ui green button" onclick="event.preventDefault(); next(3);">Next</button>
+
+<script>
+  function selectthis(_this, _number) {
+    console.log(_this);
+
+    $('.type').removeClass("selected");
+    $(_this).addClass("selected");
+
+    $('input#projecttype').val(_number);
+
+  }
+</script>
+
+<style>
+  .selected {
+    border-bottom: 10px solid red !important;
+  }
+</style>

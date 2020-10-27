@@ -1,0 +1,35 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+  <div class="first">
+    {{> design/first}}
+    <h1>Get Started</h1>
+<h3>Step 1 of 7</h3>
+
+<div class="field">
+    <label>User Input</label>
+    <input type="text">
+  <br>
+  <h3>
+  <b>Here are some good examples:
+    <ul>
+      <li>Developer needed for creating a responsive WordPress Theme</li>
+      <li>CAD designer to create a 3D model of a residential building</li>
+      <li>Need a design for a new company logo</li>
+
+    </ul>
+  </b>
+</h3>
+</div>
+  </div>
+
+
+  <input name="mainformval" id="mainformval" hidden>
+  <input name="suboptionformval" id="suboptionformval" hidden>
+</form>
+<br><br>
+
+
+<br><br>

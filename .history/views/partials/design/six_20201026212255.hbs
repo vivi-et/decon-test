@@ -1,0 +1,155 @@
+<h1>Budget</h1>
+<h3>Step 6 of 7</h3>
+
+
+
+<div class="ui three stackable cards">
+  <div class="budget card" onclick="selectthis(this, 1, 'budget');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+  </div>
+  <div class="budget card" onclick="selectthis(this, 2, 'budget');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+  </div>
+</div>
+<br><br>
+<input id="budget" type="number" name="budget">
+<br>
+<br>
+<div class="hourly" hidden>
+
+  <div class="grouped fields">
+    <label>Set your estimated budget</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" name="budgettype" value="1">
+        <label>Hourly Range</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" name="budgettype" value="2">
+        <label>Undecided</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="option1" hidden>
+    <div class="field">
+      <label for="">Set your own hourly range</label>
+    </div>
+    <div class="fields">
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui label">
+            $
+          </div>
+          <input type="number" name="budget" onkeydown="return event.keyCode !== 69" placeholder="0">
+        </div>
+      </div>
+      <div style="display: flex; align-items: center;">
+        TO
+      </div>
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui label">
+            $
+          </div>
+          <input type="number" name="budget" onkeydown="return event.keyCode !== 69" placeholder="0">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="option2 disabled field" hidden>
+    <input type="text" name="budget" readonly placeholder="undecided">
+  </div>
+
+
+</div>
+<br><br>
+<div class="fixed" hidden>
+
+  <h4>Do you have a specific budget?</h4>
+  <div class="ui right labeled input">
+    <label for="amount" class="ui label">$</label>
+    <input type="text" placeholder="Amount" id="amount">
+    <div class="ui basic label">USD</div>
+  </div>
+</div>
+
+
+<br>
+<br>
+
+
+<div class="ui three stackable cards">
+  <div class="duration card" onclick="selectthis(this, 1, 'duration');">
+    <div class="image">
+      <img src="/uploads/imgs/design/steve.jpg">
+    </div>
+  </div>
+  <div class="duration card" onclick="selectthis(this, 2, 'duration');">
+    <div class="image">
+      <img src="/uploads/imgs/design/steve.jpg">
+    </div>
+  </div>
+
+  <div class="duration card" onclick="selectthis(this, 3, 'duration');">
+    <div class="image">
+      <img src="/uploads/imgs/design/steve.jpg">
+    </div>
+  </div>
+
+  <div class="duration card" onclick="selectthis(this, 4, 'duration');">
+    <div class="image">
+      <img src="/uploads/imgs/design/steve.jpg">
+    </div>
+  </div>
+
+
+</div>
+<br><br>
+<input id="duration" type="number" name="duration">
+
+<br><br>
+<button class="ui green button" onclick="event.preventDefault(); next(4);">Next</button>
+
+<script>
+
+
+  function togglebudget(_number) {
+
+    if (_number === 1) {
+      // hourly clicked
+      $('div.hourly').show();
+      $('div.fixed').hide();
+      $('div.fixed :input').val('');
+    }
+    else {
+      // fixed clicked
+      $('div.fixed').show();
+      $('div.hourly').hide();
+      $('div.hourly :input').val('');
+    }
+    return false;
+
+
+  }
+
+  $('div.hourly :input[type=radio]').change(function () {
+    console.log(this.value);
+
+    if (this.value === '1') {
+      $('div.option1').show();
+      $('div.option2').hide();
+    }
+    else if (this.value === '2') {
+      $('div.option2').show();
+      $('div.option1').hide();
+      $('div.option1 :input').val('');
+    }
+  });
+</script>

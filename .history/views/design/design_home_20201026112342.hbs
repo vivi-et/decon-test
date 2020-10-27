@@ -1,0 +1,25 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+  <div part="1" class="first part">
+    {{> design/first}}
+  </div>
+  <div part="1" class="first part">
+    {{> design/first}}
+  </div>
+
+
+</form>
+<br><br>
+
+
+<button class="ui inverted fluid red large button" onclick="event.preventDefault(); submit();">등록하기</button>
+<br><br>
+
+<script>
+  function next(part) {
+
+  }
+</script>

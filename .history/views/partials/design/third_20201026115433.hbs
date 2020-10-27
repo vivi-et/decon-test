@@ -1,0 +1,28 @@
+<div class="ui three stackable cards">
+  <div class="card" onclick="selectthis(this, 1);">
+    <div class="image" >
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+  <div class="card" onclick="selectthis(this, 1);">
+    <div class="image">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+  <div class="card" onclick="selectthis(this, 1);">
+    <div class="image" onclick="3">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div>
+  </div>
+</div>
+<input type="number" name="projecttype">
+<button class="ui green button" onclick="event.preventDefault(); next(3);">Next</button>
+
+<script>
+  function selectthis(_this, _number){
+    console.log(_this);
+
+    $(_this).hide()
+    
+  }
+</script>

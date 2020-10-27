@@ -1,0 +1,31 @@
+{{!< main}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<form class="ui form" id="form" action="/design/add" method="POST" enctype="multipart/form-data">
+
+
+
+  <div class="order_list">
+    <h1>Add Product</h1>
+    <br><br>
+    <div id="mainoption">
+      {{> design/design_form_main}}
+    </div>
+    <br>
+    <div id="option">
+      {{!-- design_form_options appended here --}}
+    </div>
+    <button class="ui teal button" onclick="addOption(); event.preventDefault(); "
+      style="height: 4em; border-radius: 0 0 10px 10px;">
+      옵션추가
+    </button>
+  </div>
+  <input name="mainformval" id="mainformval" hidden>
+  <input name="suboptionformval" id="suboptionformval" hidden>
+</form>
+<br><br>
+
+
+<button class="ui inverted fluid red large button" onclick="event.preventDefault(); submit();">등록하기</button>
+<br><br>

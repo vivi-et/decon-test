@@ -1,0 +1,60 @@
+<h1>Budget</h1>
+<h3>Step 6 of 7</h3>
+
+
+
+<div class="ui three stackable cards">
+  <div class="budget card" onclick="selectbudget(this, 1, 'budget');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+  </div>
+  <div class="budget card" onclick="selectbudget(this, 2, 'budget');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+  </div>
+</div>
+<br><br>
+<input id="budget" type="number" name="budget">
+
+<div class="hourly" hidden>
+  asdfasdfsdfdsf
+
+</div>
+<div class="fixed">
+
+  <h4>Do you have a specific budget?</h4>
+
+  <div class="ui left icon input">
+    <input type="number" onkeydown="return event.keyCode !== 69" placeholder="Enter your budget...">
+    <i class="dollar sign icon"></i>
+  </div>
+</div>
+
+
+<br>
+<br>
+<button class="ui green button" onclick="event.preventDefault(); next(4);">Next</button>
+
+<script>
+  function selectbudget(_this, _number, _type) {
+    console.log(_this);
+
+    $(`div.${_type}`).removeClass("selecteditem");
+    $(_this).addClass("selecteditem");
+
+    $(`input#${_type}`).val(_number);
+
+    togglebudget(_number);
+
+  }
+
+  function togglebudget(_number) {
+
+    if (_number === 1) {
+$('div.hourly').show();
+    }
+
+  }
+</script>

@@ -1,0 +1,45 @@
+<h1>Visibility</h1>
+<h3>Step 5 of 7</h3>
+
+<h3>Who can see your job?</h3>
+
+<div class="ui three stackable cards">
+  <div class="visibility card" onclick="selectthis(this, 1, 'visibility');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+  </div>
+  <div class="visibility card" onclick="selectthis(this, 2, 'visibility');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+  </div>
+  <div class="visibility card" onclick="selectthis(this, 3, 'visibility');">
+    <div class="image" onclick="3">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+  </div>
+</div>
+<input id="visibility" type="number" name="visibility">
+<br><br>
+
+<h3>How many people do you need for this job?</h3>
+<div class="ui three stackable cards">
+  <div class="member card" onclick="selectthis(this, 1, 'member');">
+    <div class="image">
+      <img src="/uploads/imgs/design/molly.png">
+    </div>
+  </div>
+  <div class="member card" onclick="selectthis(this, 2, 'member');">
+    <div class="image">
+      <img src="/uploads/imgs/design/molly.png">
+    </div>
+  </div>
+  </div>
+</div>
+
+<input id="member" type="number" name="member">
+
+<br>
+<br>
+<button class="ui green button" onclick="event.preventDefault(); next(5);">Next</button>
