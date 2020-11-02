@@ -1,0 +1,32 @@
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    /**
+     * Add seed commands here.
+     *
+     * Example:
+     * await queryInterface.bulkInsert('People', [{
+     *   name: 'John Doe',
+     *   isBetaMember: false
+     * }], {});
+    */
+
+    await queryInterface.bulkInsert('categories', [
+      { name: '로고&아이덴티티' },
+      { name: '웹&앱 디자인' },
+      { name: '비즈니스&광고' },
+      { name: '아트&일러스트' },
+      { name: '패키지&라벨' },
+      { name: '북&매거진' },
+
+    ], {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
+  },
+};

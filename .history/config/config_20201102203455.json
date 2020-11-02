@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "viviet",
+    "password": "1111",
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "viviet",
+    "password": "1111",
+    "database": "testDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "viviet",
+    "password": "1111",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
