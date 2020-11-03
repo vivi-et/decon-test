@@ -2,8 +2,9 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
-<form class="ui form" id="form" action="/design/add" method="POST" enctype="">
-  <div part="1" class="one part" hidden>
+<form class="ui form" style="margin-left: 20px;" id="form" action="/design/add" method="POST"
+  enctype="multipart/form-data">
+  <div part="1" class="one part" >
     {{> design/one}}
   </div>
 
@@ -15,7 +16,7 @@
     {{> design/three}}
   </div>
 
-  <div part="4" class="four part" >
+  <div part="4" class="four part" hidden>
     {{> design/four}}
   </div>
 
@@ -27,7 +28,7 @@
     {{> design/six}}
   </div>
 
-  <div part="7" class="seven part" >
+  <div part="7" class="seven part" hidden>
     {{> design/seven}}
   </div>
   <br><br>
@@ -42,15 +43,19 @@
 <br><br>
 
 <script>
-  let questions = 0;
-  let maxQuestions = 4;
-  let parts = 6;
-  let categoryList = {{{json categories}}}
+
+  let parts = 7;
+  let categoryList = {{{ json categories }}}
+
 
 
   $(document).ready(function () {
     $('button.submit').hide();
   })
+
+  function run(){
+    $('#submit').click();
+  }
 
   function next(part) {
     if (part >= parts) {
@@ -66,48 +71,134 @@
   }
 
 
-  function selectthis(_this, _number, _type) {
-   // console.log(_this);
+  function selectthis(_this, _value, _type) {
+    // console.log(_this);
 
     $(`div.${_type}`).removeClass("selecteditem");
     $(_this).addClass("selecteditem");
 
-    $(`input#${_type}`).val(_number);
+    $(`input#${_type}`).val(_value);
 
-    if (_type === 'budget') {
-      togglebudget(_number);
-    }
 
-    if(_type === 'category'){
-      changeCategory(_number);
+    switch (_type) {
+      case 'budget':
+        togglebudget(_value);
+        break;
+      case 'category':
+        changeCategory(_value);
+        break;
+      case 'resultxy':
+        const xy = _value.split(',');
+        $('input#resultxy_x').val(xy[0]);
+        $('input#resultxy_y').val(xy[1]);
+        break;
+
+      case 'paymenttype':
+        $('div.paymentamoutbox').show().val('');
+        $('input#paymentamout').val('');
+
+        if (_value === 3) {
+          $('div.paymentamoutbox').hide().val('');
+          $('input#paymentamout').val('');
+        }
+
+        break;
+
+
+      default:
+        break;
+
+
     }
 
   }
 
-  function addquestion() {
-    if (questions > maxQuestions) {
-      alert(`${maxQuestions + 1} only!`)
-      questions = maxQuestions;
+
+
+
+  function handleFileSelect(item) {
+    console.log(item.id);
+
+    const imageSection = output = document.getElementById(`${item.id}result`)
+    const maxFileLimit = 10;
+    const element = $(`#${item.id}`);
+
+    if (element[0].files.length > maxFileLimit) {
+      element.val('');
+      alert(`You can select only ${maxFileLimit} images`);
+      clearThumbnails(imageSection);
       return false;
     }
-    questions++;
 
-    const html = `{{> design/question}}`;
-    $('div#questionfield').append(html);
+    // Check File API support
+    if (window.File && window.FileList && window.FileReader) {
+      imageSection.innerHTML = '';
+      const { files } = event.target; // FileList object
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        // Only pics
+        //  continue;
 
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', (event) => {
 
+          const thisFile = event.target;
+          const div = document.createElement('div');
+          div.innerHTML = `
+          <div class="category card sample">
+            <div class="ui image thumb">
+              <img src='${thisFile.result}'>
+            </div>
+            <div class="content">
+              ${file.name}
+            </div>
+
+          </div>
+          `;
+
+          if (!file.type.match('image')) {
+
+            div.innerHTML = `
+          <div class="category card sample">
+            <div class="ui image thumb">
+              <img src='documentimage.png'>
+            </div>
+            <div class="content">
+              ${file.name}
+            </div>
+          </div>
+          `;
+
+          }
+          imageSection.insertBefore(div, null);
+        });
+        // Read the image
+        fileReader.readAsDataURL(file);
+      }
+    } else {
+      console.log('Your browser does not support File API');
+    }
   }
-  function deletequestion(_this) {
-   // console.log(_this);
 
-    $(_this).closest('div.questionbox').remove();
-    questions--;
-  }
 
 </script>
 
+
 <style>
+  .debugtest{
+    background-color: rgb(201, 201, 201) !important;
+  }
+
   .selecteditem {
     border-bottom: 10px solid green !important;
+  }
+
+  .sample {
+    padding: 5px;
+  }
+
+  .thumb {
+    height: 100px !important;
+    width: 100px !important;
   }
 </style>

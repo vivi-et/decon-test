@@ -102,11 +102,10 @@ app.use('/design', require('./routes/design'));
 // =============================== CREATE DB TABLES ===============================
 
 (async () => {
-  await db.sync(); // DB 테이블 생성
-  await initMainCategoryTable(); // 메인 카테고리 생성
-  await initSubCategoryTable(); // 세부 카테고리 생성
+  await db.sync().catch((error) => console.log('\x1b[36m%s\x1b[0m', error)); // DB 테이블 생성
+  await initMainCategoryTable().catch((error) => console.log('\x1b[36m%s\x1b[0m', error)); // 메인 카테고리 생성
+  await initSubCategoryTable().catch((error) => console.log('\x1b[36m%s\x1b[0m', error)); // 세부 카테고리 생성
 })();
-
 // =============================== 나머지 함수 및 코드들, 나중에 분리할것 ===============================
 async function initMainCategoryTable() {
   const { main } = categorylist;
@@ -122,26 +121,26 @@ async function initMainCategoryTable() {
 }
 
 async function initSubCategoryTable() {
-  const mainCategoryLists = await Category.findAll();
+  const mainCategoryLists = await Category.findAll().catch((error) => console.log('\x1b[36m%s\x1b[0m', error));
   // console.log(categorylist);
 
   Object.keys(mainCategoryLists).forEach((key) => {
     const categoryEngname = mainCategoryLists[key].engname;
     const categoryId = mainCategoryLists[key].id;
 
-    console.log(categoryEngname);
-    console.log(categoryId);
+    // console.log(categoryEngname);
+    // console.log(categoryId);
 
     const currentSubCategoryArr = categorylist[categoryEngname];
 
-    console.log(currentSubCategoryArr);
+    // console.log(currentSubCategoryArr);
 
     Object.keys(currentSubCategoryArr).forEach(async (_key) => {
       const { engname, korname } = currentSubCategoryArr[_key];
       await SubCategory.findOrCreate({
         where: { engname, korname },
         defaults: { korname, engname, categoryId },
-      });
+      }).catch((error) => console.log('\x1b[36m%s\x1b[0m', error));
     });
   });
 }

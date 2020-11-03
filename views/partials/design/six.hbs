@@ -1,179 +1,174 @@
-<h1>Budget</h1>
+<h1>프로젝트 기술</h1>
 <h3>Step 6 of 7</h3>
+<br><br>
+
+<h3>결과물 형식</h3>
+<div class="fields limiteddropdown">
+  <div class="field" style="width: auto; min-width: 100%;">
+    <select data-main="0" multiple="" id="resulttype" class="ui fluid dropdown" name="resulttype">
+      <option value="">선택</option>
+      <option value="a" disabled>인기결과물</option>
+      <option value="JPG">JPG</option>
+      <option value="PNG">PNG</option>
+      <option value="PSD">PSD</option>
+      <option value="AI">AI</option>
+      <option value="PDF">PDF</option>
+      <option value="PPT">PPT</option>
+      <option value="OBJ">OBJ</option>
+      <option value="STL">STL</option>
+      <option value="DWG">DWG</option>
+      <option value="SKP">SKP</option>
+      <option value="MP4">MP4</option>
+      <option value="MOV">MOV</option>
+      <option value="AVI">AVI</option>
+      <option value="GIF">GIF</option>
+      <option value="HTML">HTML</option>
+      <option value="WMV">WMV</option>
+      <option value="AEP">AEP</option>
 
 
+      <option value="b" disabled>기타</option>
+      <option value="EPVB">EPVB</option>
+      <option value="MoBI">MoBI</option>
+      <option value="ICO">ICO</option>
+      <option value="SVG">SVG</option>
+      <option value="SWF">SWF</option>
+      <option value="BMPR">BMPR</option>
+      <option value="KEY">KEY</option>
+      <option value="BMP">BMP</option>
+      <option value="SDS">SDS</option>
+      <option value="SLDPRT">SLDPRT</option>
+      <option value="SLDASM">SLDASM</option>
+      <option value="SLDDRW">SLDDRW</option>
+      <option value="DAE">DAE</option>
+      <option value="RVT">RVT</option>
+      <option value="BLEND">BLEND</option>
+      <option value="FLV">FLV</option>
+      <option value="M4V">M4V</option>
+      <option value="APNG">APNG</option>
+      <option value="AET">AET</option>
+      <option value="XFL">XFL</option>
+      <option value="MP3">MP3</option>
+      <option value="MPEG">MPEG</option>
+      <option value="MPG">MPG</option>
+      <option value="F4V">F4V</option>
+      <option value="MWA">MWA</option>
+      <option value="PrProj">PrProj</option>
+    </select>
+  </div>
+</div>
 
+<br><br>
+
+
+<h3>디자인 색상모드</h3>
 <div class="ui three stackable cards">
-  <div class="budget card" onclick="selectthis(this, 1, 'budget');">
+  <div class="resultcolor card" onclick="selectthis(this, 'RGB', 'resultcolor');">
     <div class="image">
       <img src="/uploads/imgs/design/kristy.png">
     </div>
+    <div class="content">RGB</div>
   </div>
-  <div class="budget card" onclick="selectthis(this, 2, 'budget');">
+  <div class="resultcolor card" onclick="selectthis(this, 'CMYK', 'resultcolor');">
     <div class="image">
       <img src="/uploads/imgs/design/matthew.png">
     </div>
+    <div class="content">CMYK</div>
   </div>
 </div>
 <br><br>
-<input id="budget" type="number" name="budget">
-<br>
-<br>
-<div class="hourly" hidden>
+<input id="resultcolor" class="debugtest" type="text" name="resultcolor">
 
-  <div class="grouped fields">
-    <label>Set your estimated budget</label>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="budgettype" value="1">
-        <label>Hourly Range</label>
-      </div>
+
+<br><br><br>
+<h3>디자인 해상도 및 규격</h3>
+
+<div class="ui four stackable cards">
+  <div class="resultxy card" onclick="selectthis(this, '210,297', 'resultxy' );">
+    <div class="image">
+      <img src="/uploads/imgs/design/elyse.png">
     </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="budgettype" value="2">
-        <label>Undecided</label>
-      </div>
+    <div class="content">A4</div>
+  </div>
+  <div class="resultxy card" onclick="selectthis(this, '1536,2048', 'resultxy' );">
+    <div class="image">
+      <img src="/uploads/imgs/design/elyse.png">
+    </div>
+    <div class="content">
+      3:4
+      <hr>
+      <br>
+      아이패드3
+      <br>
+      아이패드4
+      <br>
     </div>
   </div>
-
-  <div class="option1" hidden>
-    <div class="field">
-      <label for="">Set your own hourly range</label>
+  <div class="resultxy card" onclick="selectthis(this, '1600,2560', 'resultxy' );">
+    <div class="image">
+      <img src="/uploads/imgs/design/elyse.png">
     </div>
-    <div class="fields">
-      <div class="field">
-        <div class="ui labeled input">
-          <div class="ui label">
-            $
-          </div>
-          <input type="number" name="budget" onkeydown="return event.keyCode !== 69" placeholder="0">
-        </div>
-      </div>
-      <div style="display: flex; align-items: center;">
-        TO
-      </div>
-      <div class="field">
-        <div class="ui labeled input">
-          <div class="ui label">
-            $
-          </div>
-          <input type="number" name="budget" onkeydown="return event.keyCode !== 69" placeholder="0">
-        </div>
-      </div>
+    <div class="content">
+      10:16
+      <hr>
+      <br>
+      갤탭S
+      <br>
+      넥서스10
+      <br>
     </div>
   </div>
-  <div class="option2 disabled field" hidden>
-    <input type="text" name="budget" readonly placeholder="undecided">
+  <div class="resultxy card" onclick="selectthis(this, '', 'resultxy');">
+    <div class="image">
+      <img src="/uploads/imgs/design/elyse.png">
+    </div>
+    <div class="content">직접입력</div>
   </div>
-
 
 </div>
 <br><br>
-<div class="fixed" hidden>
+<div class="fields">
+  <div class="field">
+    <label for="">width, x</label>
+    <input id="resultxy_x" type="number" name="resultxy_x" onkeydown="return event.keyCode !== 69">
 
-  <h4>Do you have a specific budget?</h4>
-  <div class="ui right labeled input">
-    <label for="amount" class="ui label">$</label>
-    <input type="text" placeholder="Amount" name="amount" id="amount">
-    <div class="ui basic label">USD</div>
+  </div>
+  <div class="field">
+    <label for="">height, y</label>
+    <input id="resultxy_y" type="number" name="resultxy_y" onkeydown="return event.keyCode !== 69">
+  </div>
+  <div class="field">
+<label for="">&nbsp;</label>
+    <div class="ui buttons">
+      <div class="ui button resultunit" onclick="event.preventDefault(); selectthis(this, 'px', 'resultunit');">PX</div>
+      <div class="or"></div>
+      <div class="ui button resultunit" onclick="event.preventDefault(); selectthis(this, 'mm', 'resultunit');">MM</div>
+      <div class="or"></div>
+      <div class="ui button resultunit" onclick="event.preventDefault(); selectthis(this, 'inch', 'resultunit');">INCH</div>
+    </div>
+
+  </div>
+  <div class="field">
+    <label for="">&nbsp;</label>
+    <input id="resultunit" class="debugtest" type="text" name="resultunit">
   </div>
 </div>
 
-
-<br>
-<br>
-
-<h4>How long do you expect this project to last?</h4>
-
-<div class="ui three stackable cards">
-  <div class="duration card" onclick="selectthis(this, 1, 'duration');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-  <div class="duration card" onclick="selectthis(this, 2, 'duration');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-  <div class="duration card" onclick="selectthis(this, 3, 'duration');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-  <div class="duration card" onclick="selectthis(this, 4, 'duration');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
+<div class="field">
+  <label for="">DPI</label>
+  <input type="number" onkeydown="return event.keyCode !== 69" name="DPI">
 </div>
-<br><br>
-<input id="duration" type="number" name="duration">
 
-
-<h4>How long do you expect this project to last?</h4>
-
-<div class="ui three stackable cards">
-  <div class="timereq card" onclick="selectthis(this, 1, 'timereq');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-  <div class="timereq card" onclick="selectthis(this, 2, 'timereq');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-  <div class="timereq card" onclick="selectthis(this, 3, 'timereq');">
-    <div class="image">
-      <img src="/uploads/imgs/design/steve.jpg">
-    </div>
-  </div>
-</div>
-<br><br>
-<input id="timereq" type="number" name="timereq">
-
-
-
-
+=======옵션 추후 추가=======
 
 <br><br>
 <button class="ui green next button" onclick="event.preventDefault(); next(6);">Next</button>
 
 <script>
-
-
-  function togglebudget(_number) {
-
-    if (_number === 1) {
-      // hourly clicked
-      $('div.hourly').show();
-      $('div.fixed').hide();
-      $('div.fixed :input').val('');
-    }
-    else {
-      // fixed clicked
-      $('div.fixed').show();
-      $('div.hourly').hide();
-      $('div.hourly :input').val('');
-    }
-    return false;
-
-
-  }
-
-  $('div.hourly :input[type=radio]').change(function () {
-    console.log(this.value);
-
-    if (this.value === '1') {
-      $('div.option1').show();
-      $('div.option2').hide();
-    }
-    else if (this.value === '2') {
-      $('div.option2').show();
-      $('div.option1').hide();
-      $('div.option1 :input').val('');
-    }
-  });
+  $(() => {
+    $('.ui.fluid.dropdown')
+      .dropdown({
+        maxSelections: 3
+      });
+  })
 </script>

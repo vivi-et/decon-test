@@ -1,11 +1,103 @@
-{{#each categories}}
+<h1>시간 및 예산</h1>
+<h3>Step 7 of 7</h3>
+<br><br>
 
-{{dataValues.korname}}
-<br>
-<br>
-{{#each subcategories}}
-{{dataValues.korname}}
-<br>
-{{/each}}
-<br>
-{{/each}}
+<h3>프로젝트 기간</h3>
+
+<div class="ui three stackable cards">
+  <div class="requiredtime card" onclick="selectthis(this, 1, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+    <div class="content">48시간(빠른금액적용)</div>
+  </div>
+
+  <div class="requiredtime card" onclick="selectthis(this, 2, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+    <div class="content">1주일</div>
+  </div>
+
+  <div class="requiredtime card" onclick="selectthis(this, 3, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+    <div class="content">2주일</div>
+  </div>
+
+  <div class="requiredtime card" onclick="selectthis(this, 4, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+    <div class="content">1개월 미만</div>
+  </div>
+
+  <div class="requiredtime card" onclick="selectthis(this, 5, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+    <div class="content">3개월 미만</div>
+  </div>
+
+  <div class="requiredtime card" onclick="selectthis(this, 6, 'requiredtime');">
+    <div class="image">
+      <img src="/uploads/imgs/design/matthew.png">
+    </div>
+    <div class="content">디자이너와 상의후 결정</div>
+  </div>
+
+</div>
+<br><br>
+<input id="requiredtime" class="debugtest" type="text" name="requiredtime">
+<br><br>
+
+
+
+<h3>프로젝트 예산</h3>
+<h3>가격</h3>
+
+
+<div class="ui three stackable cards">
+
+  <div class="paymenttype card" onclick="selectthis(this, 1, 'paymenttype');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+    <div class="content">시간단위</div>
+  </div>
+
+  <div class="paymenttype card" onclick="selectthis(this, 2, 'paymenttype');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+    <div class="content">고정가격</div>
+  </div>
+
+  <div class="paymenttype card" onclick="selectthis(this, 3, 'paymenttype');">
+    <div class="image">
+      <img src="/uploads/imgs/design/kristy.png">
+    </div>
+    <div class="content">추후결정</div>
+  </div>
+
+</div>
+<br><br>
+
+<input id="paymenttype" class="debugtest" type="text" name="paymenttype">
+
+
+{{!-- <input id="paymentamout" type="text" name="paymentamout" placeholder="" hidden> --}}
+<br><br>
+<div class="paymentamoutbox" hidden>
+
+  <h3>가격을 입력해주세요</h3>
+  <div class="ui labeled input">
+    <input type="number" onkeydown="return event.keyCode !== 69" placeholder="액수를 입력해주세요" name="paymentamout"
+      id="paymentamout">
+        <label for="amount" class="ui label">₩</label>
+  </div>
+</div>
+
+<br><br>
+<button class="ui green next button" onclick="event.preventDefault(); next(7);">Next</button>

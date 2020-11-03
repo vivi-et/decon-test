@@ -1,56 +1,109 @@
-<h1>Details</h1>
+<h1>프로젝트 이름 및 카테고리</h1>
 <h3>Step 3 of 7</h3>
+{{!-- 
+<h3>What skills and expertise are most important to you in Graphic Design?</h3>
+<br> --}}
+<br>
+<div class="field">
+  <h3>프로젝트명</h3>
+  <input type="text" name="projectname">
+</div>
 
-<h3>
-  <b>What type of project do you have?</b>
-</h3>
+<br><br>
 
+<div class="field">
+  <h3>카테고리 1</h3>
+</div>
+<div class="ui three stackable cards">
+  {{#each categories}}
+  <div class="category card" onclick="selectthis(this, {{dataValues.id}}, 'category');">
+    <div class="content">
+      {{dataValues.korname}}
+    </div>
+    {{!-- <div class="image">
+      <img src="/uploads/imgs/design/elliot.jpg">
+    </div> --}}
+  </div>
+  {{/each}}
+</div>
+
+
+<br><br>
+<input id="category" class="debugtest" type="number" name="category">
+<br><br>
+
+
+
+<div class="ui six stackable cards subclassfield">
+
+</div>
+
+<br><br>
+<input id="subcategory" class="debugtest" type="number" name="subcategory">
+<br><br>
+
+{{!-- 
+<h3>What additional skills and expertise are important to you?</h3>
+Some Cat1
+
+Not what you're looking for?
+<br>
+Dropdown Searchable
+
+<h3>What level of experience should your freelancer have?</h3>
+<br>
 
 <div class="ui three stackable cards">
-  <div class="type card" onclick="selectthis(this, 1, 'type');">
+  <div class="experience card" onclick="selectthis(this, 1, 'experience');">
     <div class="image">
-      <img src="/uploads/imgs/design/elliot.jpg">
+      <img src="/uploads/imgs/design/kristy.png">
     </div>
   </div>
-  <div class="type card" onclick="selectthis(this, 2, 'type');">
+  <div class="experience card" onclick="selectthis(this, 2, 'experience');">
     <div class="image">
-      <img src="/uploads/imgs/design/elliot.jpg">
+      <img src="/uploads/imgs/design/matthew.png">
     </div>
   </div>
-  <div class="type card" onclick="selectthis(this, 3, 'type');">
+  <div class="experience card" onclick="selectthis(this, 3, 'experience');">
     <div class="image" onclick="3">
-      <img src="/uploads/imgs/design/elliot.jpg">
+      <img src="/uploads/imgs/design/molly.png">
     </div>
   </div>
 </div>
 <br><br>
-<input id="type" type="number" name="type">
-<br><br>
-<h3>
-  Screening Questions (optional)
-</h3>
-Add screening questions and/or require a cover letter
+<input id="experience" category="number" name="experience">
+
 <br>
-<br>
-<br>
-<a class="ui fluid label" id="addquestion" onclick="addquestion()">
-  <i class="plus icon"></i>
-  Add a Question
-</a>
-<div class="field" id="questionfield">
-<br>
-  {{!-- place for questions --}}
-</div>
-<br><br>
-<h3>Cover letter</h3>
-<br>
-<div class="ui checkbox">
-  <input type="checkbox" name="coverletter">
-  <label>Ask freelancers and agencies to write a cover letter introducing themselves.
-</label>
-<br>
-</div>
+<br> --}}
+<button class="ui green  button" onclick="event.preventDefault(); next(3);">Next</button>
 
 
-<br><br>
-<button class="ui green button" onclick="event.preventDefault(); next(3);">Next</button>
+<script>
+  function changeCategory(number) {
+    const subCategoryDiv = $('div.subclassfield');
+    let selectedCategory = categoryList[number - 1];
+    let subcategories = selectedCategory.subcategories;
+
+    console.log(subcategories);
+
+    subCategoryDiv.empty();
+
+    Object.keys(subcategories).forEach((key) => {
+      const { engname, korname, id, icon_image } = subcategories[key];
+
+      const html = `  
+      <div class="subcategory card" onclick="selectthis(this, ${id}, 'subcategory');">
+        <div class="content">
+          ${korname}
+          </div>
+        {{!-- <div class="image">
+          <img src="/uploads/imgs/design/elliot.jpg">
+        </div> --}}
+      </div>`
+
+      subCategoryDiv.append(html);
+
+    })
+
+  }
+</script>

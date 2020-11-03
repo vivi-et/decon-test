@@ -1,102 +1,100 @@
-<h1>Expertise</h1>
+<h1>프로젝트 설명 및 파일첨부</h1>
 <h3>Step 4 of 7</h3>
 
-<h3>What skills and expertise are most important to you in Graphic Design?</h3>
+{{!-- <h3>
+  <b>A good description includes:</b>
+</h3>
+<ul>
+  <li>What the deliverable is</li>
+  <li>Type of freelancer or agency you're looking for</li>
+  <li>Anything unique about the project, team, or your company</li>
+</ul> --}}
+
+<div class="field">
+  <label for="">프로젝트 설명</label>
+  <textarea name="projectdesc" class="text" id="projectdesc" cols="30" rows="10"></textarea>
+
+</div>
+<br>
 <br>
 
+<div class="field">
+  <h3>파일그룹 1</h3>
 
-<div class="ui three stackable cards">
-  {{#each categories}}
-  <div class="category card" onclick="selectthis(this, {{dataValues.id}}, 'category');">
-    <div class="content">
-      {{dataValues.korname}}
-    </div>
-    {{!-- <div class="image">
-      <img src="/uploads/imgs/design/elliot.jpg">
-    </div> --}}
-  </div>
-  {{/each}}
+</div>
+<input data-main="0" id="files1" multiple name="files1" type="file" onchange="handleFileSelect(this)">
+<br>
+<br>
+<div id="files1result" class="ui three stackable cards" style="display: inline-flex;">
 </div>
 
+<br><br>
+
+<div class="field">
+  <h3>파일그룹 2</h3>
+
+</div>
+<input data-main="1" id="files2" multiple name="files2" type="file" onchange="handleFileSelect(this)">
+<br>
+<br>
+<div id="files2result" class="ui three stackable cards" style="display: inline-flex;">
+</div>
 
 <br><br>
-<input id="category" type="number" name="category">
+
+
+<a class="ui fluid label" id="addlink" onclick="addlink()">
+  <i class="plus icon"></i>
+  링크 첨부
+</a>
+<div class="field" id="linkfield">
+  <br>
+  {{!-- place for links --}}
+</div>
 <br><br>
+
+
+<button class="ui green button" onclick="event.preventDefault(); next(4);">Next</button>
+
+
 
 <script>
-  function changeCategory(number) {
-    const subCategoryDiv = $('div.subclassfield');
-    let selectedCategory = categoryList[number - 1];
-    let subcategories = selectedCategory.subcategories;
+  let links = 0;
+  const maxlinks = 4;
 
-    console.log(subcategories);
+  function addlink() {
+    if (links > maxlinks) {
+      alert(`${maxlinks + 1} only!`)
+      links = maxlinks;
+      return false;
+    }
+    links++;
 
-    subCategoryDiv.empty();
-
-    Object.keys(subcategories).forEach((key) => {
-      const { engname, korname, id, icon_image } = subcategories[key];
-
-      const html = `  
-      <div class="subcategory card" onclick="selectthis(this, ${id}, 'subcategory');">
-        <div class="content">
-          ${korname}
-          </div>
-        {{!-- <div class="image">
-          <img src="/uploads/imgs/design/elliot.jpg">
-        </div> --}}
-      </div>`
-
-      subCategoryDiv.append(html);
+    const html = `{{> design/links}}`;
+    $('div#linkfield').append(html);
 
 
+  }
+  function deletebox(_this, type) {
+    // console.log(_this);
 
-    })
+    $(_this).closest('div.box').remove();
 
+
+    switch (type) {
+      case 'link':
+        links--;
+        break;
+      case 'question':
+        questions--;
+        break;
+      default:
+        alert('switch error');
+        console.log('switch error');
+        break;
+
+    }
 
 
   }
 </script>
-
-
-<div class="ui six stackable cards subclassfield">
-  
-</div>
-
-<br><br>
-<input id="subcategory" type="number" name="subcategory">
-<br><br>
-
-
-<h3>What additional skills and expertise are important to you?</h3>
-Some Cat1
-
-Not what you're looking for?
-<br>
-Dropdown Searchable
-
-<h3>What level of experience should your freelancer have?</h3>
-<br>
-
-<div class="ui three stackable cards">
-  <div class="experience card" onclick="selectthis(this, 1, 'experience');">
-    <div class="image">
-      <img src="/uploads/imgs/design/kristy.png">
-    </div>
-  </div>
-  <div class="experience card" onclick="selectthis(this, 2, 'experience');">
-    <div class="image">
-      <img src="/uploads/imgs/design/matthew.png">
-    </div>
-  </div>
-  <div class="experience card" onclick="selectthis(this, 3, 'experience');">
-    <div class="image" onclick="3">
-      <img src="/uploads/imgs/design/molly.png">
-    </div>
-  </div>
-</div>
-<br><br>
-<input id="experience" category="number" name="experience">
-
-<br>
-<br>
-<button class="ui green  button" onclick="event.preventDefault(); next(4);">Next</button>
